@@ -1,0 +1,51 @@
+
+
+
+<div class="row mb-1 mr-0 custom-border" *ngFor="let a of achats">
+    <div class="col-md-4 text-center border-right m-0">
+        
+        <img src="http://localhost:8080/apiproduit/getimage/{{a.image}}" width="150px" height="150px" >
+       
+    </div>
+
+    <div class="col-md-4 border-right m-0">
+        <div class="col">
+            <div class="row">
+               
+                <div> <i class="fa-solid fa-circle-info blue-color"></i> nom produit : {{a.nom}}</div>
+            </div>
+            <div class="row">
+           
+                <div> <i class="fa-solid fa-circle-info blue-color"></i> quantité :{{a.quantite}}</div>
+            </div>
+            <div class="row">
+                
+                <div> <i class="fa-solid fa-dollar-sign blue-color"></i> prix :{{a.montant}}</div>
+            </div>
+            <div class="row">
+                
+                <div> <i class="fa-solid fa-circle-info blue-color"></i> date :{{a.date}}</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-4 m-0 border-right">
+        <div class="row">
+            <div class="col-md-2">
+                <i class="fa-solid fa-flag-checkered blue-color"></i>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-12">nom de la categorie</div>
+                    <div class="col-md-12">{{a.cat}}</div>
+                 
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

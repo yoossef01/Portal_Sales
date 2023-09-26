@@ -1,0 +1,89 @@
+<body>
+  <header class="row">
+    <nav class="col-md-4">
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="/template2ajoutproduit">ajout produit</a></li>
+        <li><a href="/template2ajoutcategorie">ajout catégorie</a></li>
+        <!-- <li><a (click)="logout()">Logout</a></li> -->
+        <!-- <li><a (click)="navigation()">dashboard</a></li> -->
+        <!-- <li><a (click)="navigation1()">achat</a></li> -->
+        
+
+      </ul>
+    </nav>
+    <div class="search-bar col-md-8">
+      <input type="text" placeholder="Recherche..." [(ngModel)]="texte">
+      <button type="submit">Recherche</button>
+    </div>
+
+  </header>
+
+
+
+  <div class="main-container m-4">
+    <div class="row min-height-600 no-flex-wrap">
+      <div class="card col col-md-2 ml-2 mt-2 mb-2">
+        <div class="col">
+          <div>
+
+            <h4>Catégorie</h4>
+          </div>
+          <div>
+
+
+
+
+            <div style="max-height: 550px; overflow-y: scroll;">
+
+              <div class="category" (click)="selectCategorie($event)" *ngFor="let cat of categories">
+
+                <h2>{{ cat.nom }}</h2>
+
+
+                <div class="d-grid gap-2 mt-4">
+                  <button class="btn btn-danger " (click)="deletecat(cat)"><i
+                      class="fa-solid fa-ban"></i>&nbsp;Supprimer</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card col col-md-9 pr-0 pl-0 mt-2 background-grey border-none"
+        style="max-height: 550px; overflow-y: scroll;">
+        <div class="col pl-0 pr-0 d-flex flex-column justify-content-between">
+
+
+          <div class="card-body">
+            <main>
+
+              <div class="card product-card" *ngFor="let p of produitF">
+                <img src="http://localhost:8080/apiproduit/getimage/{{p.id}}" alt="product-image">
+                <h2>{{p.nom}}</h2>
+                <h3 style="color:red">{{p.prix}} DT</h3>
+                <h6 style="color: green" *ngIf="p.quantite>0; ">
+                  En Stock
+                </h6>
+
+                <div class="card-buttons">
+                  <button class="add-to-cart" (click)="update(p.id)">update</button>
+                  <button class="remove-from-cart" (click)=delete(p)>Supprimer</button>
+                </div>
+              </div>
+
+
+
+            </main>
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>

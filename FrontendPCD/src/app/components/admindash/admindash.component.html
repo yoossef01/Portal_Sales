@@ -1,0 +1,72 @@
+
+<nav style="margin:auto" class="navbar navbar-expand-lg bg-dark">
+        
+    <a style="color: white;" class="navbar-brand" href="home">ADMIN DASHBOARD</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+        
+
+        <li class="nav-item">
+            <a style="color: white;"class="nav-link active" aria-current="page" href="javascript:void(0);" routerLink="/home">Home</a>
+          </li>
+
+        
+        
+      </ul>
+      
+    </div>
+  
+  </nav>
+  
+  <div class="container">
+
+  <hr>
+    <h2>Admin Dashboard</h2>
+    <a style="color: rgb(86, 86, 86); font-size: x-large;"><marquee behavior="scroll" direction="left">
+      Bienvenue dans le tableau de bord d'administration. Veuillez trouver la liste des vendeurs ci-dessous!</marquee></a>
+  <hr>
+    <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search"> 
+    <br>
+    <a style="color: rgb(86, 86, 86); font-size: xx-large;">Liste des vendeurs actuels</a>
+<div class="tableFixHead">
+  <br>
+  <table class="table table-striped">
+    <thead class="table-header">
+      <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        
+        
+        
+        <th>Adresse</th>
+        <th>Téléphone</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let v of vendeur ">
+        <td>{{v.id}}</td>
+        <td>{{v.nom}}</td>
+        <td>{{v.prenom}}</td>
+        
+        
+        
+        <td>{{v.adresse}}</td>
+        <td>{{v.tel}}</td>
+        <td>{{v.email}}</td>
+        
+        <td>
+          
+          <button (click) = "DeleteVendeur(v.id)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  

@@ -1,0 +1,21 @@
+<div >
+    <div class="header">
+      <app-header></app-header>
+    </div>
+    <div class="main-container">
+      <div class="side-nav">
+        <app-side-nav></app-side-nav>
+      </div>
+      <div [ngSwitch]="this.as.Page">
+        <div *ngSwitchCase="main">
+      
+        <app-main></app-main>
+      </div>
+      <div *ngSwitchCase="editProfil">
+        <app-edit-profil></app-edit-profil>
+      </div>
+      <div *ngSwitchCase="achat">
+        <app-achat></app-achat>
+      </div>
+    </div></div>
+</div>

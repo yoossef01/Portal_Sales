@@ -1,0 +1,115 @@
+<div class="split-container">
+  <div class="split-left">
+
+<section >
+    
+  <h2 *ngIf="this.suivant==false " > Ajouter un produit</h2>
+     <form *ngIf="this.suivant==false "  #produitForm="ngForm" (submit)="suivantButton()">
+
+      <div mat-dialog-content>
+        <mat-form-field>
+        <mat-label for="nom">Nom</mat-label>
+        <input type="text" id="nom" name="nom" placeholder="Nom" matInput  [(ngModel)]="produit.nom" [required]="true">
+        <mat-error *ngIf="isNomEmpty">Le nom est obligatoire</mat-error>
+      </mat-form-field>
+      
+      <h4 class="btn btn-success" (click)="getdata()">Recherche sémantique</h4>
+      <mat-form-field>
+       
+        <mat-label for="categorie">Prix similaire</mat-label>
+        
+        <mat-select id="categorie" name="categorie"(change)="selectCat($event)" [(ngModel)]="produit.categorie.nom" [required]="true" >
+          
+          <mat-option *ngFor="let cat of dat" [value]="cat.id" >{{ cat.id }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+
+        <mat-label for="prix">Prix</mat-label>
+        <input type="number" id="prix" name="prix" placeholder="Prix" matInput [(ngModel)]="produit.prix" [required]="true">
+      </mat-form-field>
+      
+
+  
+      <mat-form-field>
+
+        <mat-label for="quantite">Quantité</mat-label>
+        <input type="number" id="quantite" name="quantite" placeholder="Quantité" matInput [(ngModel)]="produit.quantite" [required]="true">
+      </mat-form-field>
+  
+      
+  
+      <mat-form-field>
+        <mat-label for="categorie">Catégorie</mat-label>
+        <mat-select id="categorie" name="categorie"(change)="selectCat($event)" [(ngModel)]="produit.categorie.id" [required]="true" >
+          <mat-option *ngFor="let cat of categories" [value]="cat.id" >{{ cat.nom }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+     
+  <div>
+        <mat-label for="photo">Photo</mat-label>
+        <input #myInput  type="file" id="photo" name="photo" (change)="onPhotoSelected($event)" [(ngModel)]="photo" required>
+      </div>
+      <button mat-raised-button color="primary" type="submit"  >Suivant</button>
+      <button mat-raised-button mat-dialog-close (click)="onCancel()">Annuler</button>
+    </div>
+    
+    </form> 
+    <h2 *ngIf="this.suivant==true " > Ajouter une description</h2>
+    <form *ngIf="this.suivant==true " #DescriptionForm="ngForm" >
+      <div mat-dialog-content>
+        <mat-form-field>
+        <mat-label for="couleur">Couleur</mat-label>
+        <input type="text" id="couleur" name="couleur" placeholder="Couleur" matInput  [(ngModel)]="description.color" [required]="true">
+        <mat-error *ngIf="isNomEmpty">Le nom est obligatoire</mat-error>
+      </mat-form-field>
+      
+  
+      <mat-form-field>
+
+        <mat-label for="matière">Matière</mat-label>
+        <input type="text" id="matière" name="matière" placeholder="Matière" matInput [(ngModel)]="description.material" [required]="true">
+      </mat-form-field>
+  
+      <mat-form-field>
+
+        <mat-label for="description">Description courte</mat-label>
+        <input type="text" id="description"name="description" placeholder="Description courte" matInput [(ngModel)]="description.shortDescription" [required]="true">
+      </mat-form-field>
+      <mat-form-field>
+
+        <mat-label for="description">Description longue</mat-label>
+        <input type="text" id="description"name="description" placeholder="Description longue" matInput [(ngModel)]="description.longDescription" [required]="true">
+      </mat-form-field>
+      <button class="btn light" (click)="precedentButton()">Precédent</button>
+      <button mat-raised-button color="primary" type="submit"  (click)="addProduit()" (click)="onCancel()" >Ajouter</button>
+
+      <button mat-raised-button mat-dialog-close (click)="onCancel()">Annuler</button>
+      </div>
+      
+    </form> 
+  </section></div>
+  <div class="split-right">
+  </div>
+  <div>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top"  *ngIf="img" [src]="img" alt="Photo du produit" width="50" height= "170" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{produit.nom}}</h5>
+          <h6 style="color:red">
+
+            {{produit.prix}} DT
+          </h6>
+          <h6 style="color: green" *ngIf="produit.quantite>0; else repture">
+            En Stock
+          </h6>
+          <p> <a class="btn btn-primary" id="btn">Acheter Maintenant</a>
+            
+          
+        </p>
+        <ng-template #repture><h6 style="color: brown"> Rupture de Stock</h6>
+        </ng-template>
+        </div>
+      </div> 
+</div>

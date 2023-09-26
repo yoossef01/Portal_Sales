@@ -1,0 +1,91 @@
+<div class="split-container">
+    <div class="split-bottom">
+         <div>
+            <article class="card card-product-list">
+                <div class="row no-gutters">
+                    <aside class="col-md-3">
+                        <a  class="img-wrap"><img  *ngIf="img" [src]="img" style="width:160px;height:200px;"></a>
+                    </aside> <!-- col.// -->
+                    <div class="col-md-6">
+                        <div class="info-main">
+                            <h4  class="h5 title">  {{prod.nom}} </h4>
+                            <div class="rating-wrap mb-3">
+                                <ul class="rating-stars">
+                                    <li style="width:80%" class="stars-active"> 
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                        <i class="fa fa-star"></i> 
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                        <i class="fa fa-star"></i> 
+                                    </li>
+                                </ul>
+                                
+                            </div> <!-- rating-wrap.// -->
+                            
+                            <p>{{ description.shortDescription}} </p>
+                        </div> <!-- info-main.// -->
+                    </div> <!-- col.// -->
+                    <aside class="col-sm-3">
+                        <div class="info-aside">
+                            <div class="price-wrap">
+                                <span class="price h5">  {{prod.prix}} DT </span>  
+                                <h6 style="color: green" *ngIf="prod.quantite>0; else repture">
+                                    En Stock
+                                  </h6>
+                            </div> <!-- info-price-detail // -->
+                            <ng-template #repture><h6 style="color: brown"> Rupture de Stock</h6>
+                            </ng-template>
+                            <br>
+                            <p>
+                                
+                                <a href="#" class="btn btn-light btn-block">
+                                    <span class="btn btn-primary">Acheter maintenant</span></a>
+                            </p>
+                        </div> <!-- info-aside.// -->
+                    </aside> <!-- col.// -->
+                </div> <!-- row.// -->
+            </article> <!-- card-product .// -->
+        </div>
+    <div class="split-top">
+        <section>
+  <h2> Modifier un produit</h2>
+
+  <form #produitForm="ngForm" (submit)="updateProduit()">
+    <div mat-dialog-content>
+      <mat-form-field>
+        <input matInput type="text" id="nom" name="nom" [(ngModel)]="prod.nom" [required]="true">
+        <mat-label>Nom</mat-label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="number" id="prix" name="prix" [(ngModel)]="prod.prix" [required]="true">
+        <mat-label>Prix</mat-label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput type="number" id="quantite" name="quantite" [(ngModel)]="prod.quantite" [required]="true">
+        <mat-label>Quantité</mat-label>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Catégorie</mat-label>
+        <select matNativeControl id="categorie" name="categorie" (change)="selectCat($event)" [(ngModel)]="prod.categorie.id" [required]="true" >
+          <option *ngFor="let cat of categories" [value]="cat.id" >{{ cat.nom }}</option>
+        </select>
+      </mat-form-field>
+     
+      
+       <div>      
+          <label>Photo</label>
+        <input  #myInput type="file" id="photo" name="photo" (change)="onPhotoSelected($event)" [(ngModel)]="photo" required>
+      </div>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary"  routerLink="/liste"  type="submit"(click)="onCancel()" >Modifier</button>
+      <button mat-raised-button mat-dialog-close>Annuler</button>
+    </div>
+   </div>
+  </form>
+</section></div></div>

@@ -1,0 +1,241 @@
+ <div class="container mycontainer" >
+  <div class="card justify-content-md-center">
+      <div class="card-header text-center">
+          <h3>S'inscrire</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="formVendeur" (ngSubmit)="submit()">
+          <div class="form-group row">
+          <div class=" mb-3 col-md-6 ">
+            <input type="text" class="form-control " formControlName="nom" placeholder="Nom" required minlength="3" maxlength="20">
+            <div class="alert alert-danger" *ngIf="formVendeur.controls['nom'].touched && formVendeur.controls['nom'].errors">
+              <div *ngIf="formVendeur.controls['nom'].errors?.['required']">Nom requis</div>
+              <div *ngIf="formVendeur.controls['nom'].errors?.['minlength']">Le nom doit comporter au moins 3 caractères</div>
+              <div *ngIf="formVendeur.controls['nom'].errors?.['maxlength']">Le nom ne doit pas dépasser 20 caractères</div>
+            </div>
+          </div>
+          <div class="mb-3  col-md-6">
+            <input type="text" class="form-control" formControlName="prenom" placeholder="Prenom" required minlength="3" maxlength="20">
+            <div class="alert alert-danger" *ngIf="formVendeur.controls['prenom'].touched && formVendeur.controls['prenom'].errors">
+              <div *ngIf="formVendeur.controls['prenom'].errors?.['required']">Prenom requis</div>
+              <div *ngIf="formVendeur.controls['prenom'].errors?.['minlength']">Le prenom doit comporter au moins 3 caractères</div>
+              <div *ngIf="formVendeur.controls['prenom'].errors?.['maxlength']">Le prenom ne doit pas dépasser 20 caractères</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" formControlName="nomboutique" placeholder="Nom de la boutique" required minlength="3" maxlength="20">
+            <div class="alert alert-danger" *ngIf="formVendeur.controls['nomboutique'].touched && formVendeur.controls['prenom'].errors">
+              <div *ngIf="formVendeur.controls['nomboutique'].errors?.['required']">Prenom requis</div>
+              <div *ngIf="formVendeur.controls['nomboutique'].errors?.['minlength']">Le prenom doit comporter au moins 3 caractères</div>
+              <div *ngIf="formVendeur.controls['nomboutique'].errors?.['maxlength']">Le prenom ne doit pas dépasser 20 caractères</div>
+            </div>
+          </div>
+        
+        
+        
+        </div>
+          <div class="mb-3">
+            <input type="email" class="form-control" formControlName="adresse" placeholder="Adresse" required>
+            <div class="alert alert-danger" *ngIf="formVendeur.controls['adresse'].touched && formVendeur.controls['adresse'].errors">
+              <div *ngIf="formVendeur.controls['adresse'].errors?.['required']">Adresse email requise</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" formControlName="tel" placeholder="Numero Telephone" required pattern="^[0-9]*$" minlength="8" maxlength="8">
+            <div class="alert alert-danger" *ngIf="formVendeur.controls['tel'].touched && formVendeur.controls['tel'].errors">
+              <div *ngIf="formVendeur.controls['tel'].errors?.['required']">Numéro de téléphone requis</div>
+              <div *ngIf="formVendeur.controls['tel'].errors?.['pattern']">Le numéro de téléphone doit contenir uniquement des chiffres</div>
+              <div *ngIf="formVendeur.controls['tel'].errors?.['minlength']">Le numéro de téléphone doit comporter 8 chiffres</div>
+              <div *ngIf="formVendeur.controls['tel'].errors?.['maxlength']">Le numéro de téléphone doit comporter 8 chiffres</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="email" class="form-control" formControlName="email" placeholder="E-mail" required>
+            <div class="alert alert-danger" *ngIf="formVendeur.controls['email'].touched && formVendeur.controls['email'].errors">
+              <div *ngIf="formVendeur.controls['email'].errors?.['required']">E-mail requis</div>
+              <div *ngIf="formVendeur.controls['email'].errors?.['pattern']">E-mail invalide</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" formControlName="password" placeholder="Mot de passe"  required>
+            </div>
+
+            <div class="mb-3">
+              <input type="text" class="form-control" formControlName="fax" placeholder="Fax" required minlength="3" maxlength="20">
+            </div>
+      
+          <div class="mb-3 d-flex justify-content-between">
+            <input [disabled]="!formVendeur.valid" class="btn btn-primary w-100" type="submit" value="S'inscrire">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> 
+<!-- <div class="page-holder align-items-center py-4 bg-gray-100 vh-100">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 px-lg-4"  *ngIf="userlogin">
+        <div class="card">
+          <div class="card-header px-lg-5">
+            <div class="card-heading text-primary">Jassa Login</div>
+          </div>
+          <div class="card-body p-lg-5">
+            <h3 class="mb-4">Hi, welcome back! ??</h3>
+            <p class="text-muted text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+            <form id="loginForm" action="index.html">
+              <div class="form-floating mb-3">
+                <input class="form-control" id="floatingInput" type="email" placeholder="name@example.com" required>
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" id="floatingPassword" type="password" placeholder="Password" required>
+                <label for="floatingPassword">Password</label>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                <label class="form-check-label" for="remember">Remember me</label>
+              </div>
+              <button class="btn btn-primary" type="button">Submit</button>
+            </form>
+          </div>
+          <div class="card-footer px-lg-5 py-lg-4">
+            <div class="text-sm text-muted">Don't have an account? <a (click)="user_register()">Register</a>.</div>
+          </div>
+        </div>
+      </div>
+       <div class="col-lg-6 px-lg-4" *ngIf="userregister">
+        <div class="card">
+          <div class="card-header px-lg-5">
+            <div class="card-heading text-primary">Jassa Register</div>
+          </div>
+          <div class="card-body p-lg-5">
+            <h3 class="mb-4">Get started with Chamkila</h3>
+            <p class="text-muted text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+            <form action="index.html">
+              <div class="form-floating mb-3">
+                <input class="form-control" id="username" type="email" placeholder="name@example.com" required>
+                <label for="username">Username</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" id="floatingInput" type="email" placeholder="name@example.com" required>
+                <label for="floatingInput">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" id="floatingPassword" type="password" placeholder="Password" required>
+                <label for="floatingPassword">Password</label>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="agree" id="agree">
+                <label class="form-check-label" for="agree">I agree with the <a href="#">Terms & Conditions</a>.</label>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary" id="regidter" type="button" name="registerSubmit">Register</button>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer px-lg-5 py-lg-4">
+            <div class="text-sm text-muted">Already have an account? <a (click)="user_login()">Login</a>.</div>
+          </div>
+        </div>
+      </div>
+     <div class="col-lg-6 col-xl-5 ms-xl-auto px-lg-4 text-center text-primary"><img class="img-fluid mb-4" width="300" src="https://therichpost.com/wp-content/uploads/2021/06/login_page_image.png" alt="" style="transform: rotate(10deg)">
+        <h1 class="mb-4">Therichpost.com <br class="d-none d-lg-inline">free code  snippets.</h1>
+        <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="page-holder align-items-center py-4 bg-gray-100 vh-100">
+  <div class="container">
+    <div class="row align-items-center">
+<div class="col-lg-6 px-lg-4" >
+  <div class="card">
+    <div class="card-header px-lg-5">
+      <div class="card-heading text-primary">Créer votre boutique</div>
+    </div>
+    <div class="card-body p-lg-5">
+      <h2 class="mb-4">Bienvenue chez PortailMaker</h2>
+        <form [formGroup]="formVendeur" (ngSubmit)="submit()">
+          <div class="form-floating row">
+        <div class="form-floating  mb-3 col-md-6">
+            <input type="text" class="form-control" formControlName="nom" placeholder="&nbsp;Nom" required minlength="3" maxlength="20">
+          <label for="username">Nom</label>
+          <div class="alert alert-danger" *ngIf="formVendeur.controls['nom'].touched && formVendeur.controls['nom'].errors">
+              <div *ngIf="formVendeur.controls['nom'].errors?.['required']">Nom requis</div>
+              <div *ngIf="formVendeur.controls['nom'].errors?.['minlength']">Le nom doit comporter au moins 3 caractères</div>
+              <div *ngIf="formVendeur.controls['nom'].errors?.['maxlength']">Le nom ne doit pas dépasser 20 caractères</div>
+            </div>
+        </div>
+        <div class="form-floating mb-3 col-md-6">
+            <input type="text" class="form-control" formControlName="prenom" placeholder="Prenom" required minlength="3" maxlength="20">
+          <label for="floatingInput">Prenom</label>
+           <div class="alert alert-danger" *ngIf="formVendeur.controls['prenom'].touched && formVendeur.controls['prenom'].errors">
+              <div *ngIf="formVendeur.controls['prenom'].errors?.['required']">Prenom requis</div>
+              <div *ngIf="formVendeur.controls['prenom'].errors?.['minlength']">Le prenom doit comporter au moins 3 caractères</div>
+              <div *ngIf="formVendeur.controls['prenom'].errors?.['maxlength']">Le prenom ne doit pas dépasser 20 caractères</div>
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="nomboutique" placeholder="Nom de la boutique" required minlength="3" maxlength="20">
+          <label for="floatingInput">Nom de la boutique</label>
+        <div class="alert alert-danger" *ngIf="formVendeur.controls['nomboutique'].touched && formVendeur.controls['prenom'].errors">
+              <div *ngIf="formVendeur.controls['nomboutique'].errors?.['required']">Prenom requis</div>
+              <div *ngIf="formVendeur.controls['nomboutique'].errors?.['minlength']">Le prenom doit comporter au moins 3 caractères</div>
+              <div *ngIf="formVendeur.controls['nomboutique'].errors?.['maxlength']">Le prenom ne doit pas dépasser 20 caractères</div>
+            </div>
+        </div>
+        <div class="form-floating mb-3 ">
+            <input type="email" class="form-control" formControlName="adresse" placeholder="Adresse" required>
+          <label for="floatingInput">Adresse</label>
+          <div class="alert alert-danger" *ngIf="formVendeur.controls['adresse'].touched && formVendeur.controls['adresse'].errors">
+              <div *ngIf="formVendeur.controls['adresse'].errors?.['required']">Adresse email requise</div>
+            </div>
+        </div>
+        <div class="form-floating mb-3 col-md-6">
+            <input type="text" class="form-control" formControlName="tel" placeholder="Numero Telephone" required pattern="^[0-9]*$" minlength="8" maxlength="8">
+          <label for="floatingPassword">Numéro de téléphone</label>
+        <div class="alert alert-danger" *ngIf="formVendeur.controls['tel'].touched && formVendeur.controls['tel'].errors">
+              <div *ngIf="formVendeur.controls['tel'].errors?.['required']">Numéro de téléphone requis</div>
+              <div *ngIf="formVendeur.controls['tel'].errors?.['pattern']">Le numéro de téléphone doit contenir uniquement des chiffres</div>
+              <div *ngIf="formVendeur.controls['tel'].errors?.['minlength']">Le numéro de téléphone doit comporter 8 chiffres</div>
+              <div *ngIf="formVendeur.controls['tel'].errors?.['maxlength']">Le numéro de téléphone doit comporter 8 chiffres</div>
+            </div>
+        </div>
+
+       
+        <div class="form-floating mb-3 col-md-6">
+              <input type="text" class="form-control" formControlName="fax" placeholder="Fax" required minlength="3" maxlength="20">
+          <label for="floatingInput">Numéro du fax</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" formControlName="email" placeholder="E-mail" required>
+          <label for="floatingInput">Adresse email</label>
+           <div class="alert alert-danger" *ngIf="formVendeur.controls['email'].touched && formVendeur.controls['email'].errors">
+              <div *ngIf="formVendeur.controls['email'].errors?.['required']">E-mail requis</div>
+              <div *ngIf="formVendeur.controls['email'].errors?.['pattern']">E-mail invalide</div>
+            </div>
+        </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" formControlName="password" placeholder="Mot de passe"  required>
+          <label for="floatingInput">Mot de passe</label>
+        </div>
+         <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" name="agree" id="agree">
+          <label class="form-check-label" for="agree">I agree with the <a href="#">Terms & Conditions</a>.</label>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary w-100" id="regidter" type="submit" name="registerSubmit">S'inscrire</button>
+        </div></div>
+      </form>
+    </div>
+
+    <div class="card-footer px-lg-5 py-lg-4">
+      <div class="text-sm text-muted">Already have an account? <a (click)="user_login()">Login</a>.</div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6 col-xl-5 ms-xl-auto px-lg-4 text-center text-primary"><img class="img-fluid mb-4" width="300" src="https://therichpost.com/wp-content/uploads/2021/06/login_page_image.png" alt="" style="transform: rotate(10deg)">
+  <h1 class="mb-4">Therichpost.com <br class="d-none d-lg-inline">free code  snippets.</h1>
+  <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+</div>
+    </div></div></div> -->

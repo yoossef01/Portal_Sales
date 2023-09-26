@@ -1,0 +1,9 @@
+.split-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .split-screen > * {
+    flex: 1;
+  }

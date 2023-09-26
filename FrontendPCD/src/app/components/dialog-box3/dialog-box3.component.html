@@ -1,0 +1,141 @@
+<div class="split-container">
+    <div class="split-bottom">
+        <div>
+            <article class="card card-product-list">
+                <div class="row no-gutters">
+                    <aside class="col-md-3">
+                        <a  class="img-wrap"><img  *ngIf="img" [src]="img" style="width:160px;height:200px;"></a>
+                    </aside> <!-- col.// -->
+                    <div class="col-md-6">
+                        <div class="info-main">
+                            <h4  class="h5 title">  {{produit.nom}} </h4>
+                            <div class="rating-wrap mb-3">
+                                <ul class="rating-stars">
+                                    <li style="width:80%" class="stars-active"> 
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                        <i class="fa fa-star"></i> 
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                        <i class="fa fa-star"></i> 
+                                    </li>
+                                </ul>
+                                
+                            </div> <!-- rating-wrap.// -->
+                            
+                            <p>{{ description.shortDescription}} </p>
+                        </div> <!-- info-main.// -->
+                    </div> <!-- col.// -->
+                    <aside class="col-sm-3">
+                        <div class="info-aside">
+                            <div class="price-wrap">
+                                <span class="price h5">  {{produit.prix}} DT </span>  
+                                <h6 style="color: green" *ngIf="produit.quantite>0; else repture">
+                                    En Stock
+                                  </h6>
+                            </div> <!-- info-price-detail // -->
+                            <ng-template #repture><h6 style="color: brown"> Rupture de Stock</h6>
+                            </ng-template>
+                            <br>
+                            <p>
+                                
+                                <a href="#" class="btn btn-light btn-block">
+                                    <span class="btn btn-primary">Acheter maintenant</span></a>
+                                                <button (click)="getdata()">prix similaire</button>
+                            </p>
+                        </div> <!-- info-aside.// -->
+                    </aside> <!-- col.// -->
+                </div> <!-- row.// -->
+            </article> <!-- card-product .// -->
+        </div>
+    <div class="split-top">
+   
+        <section >
+            <h2> Ajouter un produit</h2>
+          
+             <form *ngIf="this.suivant==false "  #produitForm="ngForm" (submit)="suivantButton()">
+              <div mat-dialog-content>
+                <mat-form-field>
+                <mat-label for="nom">Nom</mat-label>
+                <input type="text" id="nom" name="nom" placeholder="Nom" matInput  [(ngModel)]="produit.nom" [required]="true">
+                <mat-error *ngIf="isNomEmpty">Le nom est obligatoire</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+       
+                <mat-label for="categorie">Prix similaire</mat-label>
+                
+                <mat-select id="categorie" name="categorie"(change)="selectCat($event)" [(ngModel)]="produit.categorie.nom" [required]="true" >
+                  
+                  <mat-option *ngFor="let cat of dat" [value]="cat.id" >{{ cat.id }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+          
+              <mat-form-field>
+        
+                <mat-label for="prix">Prix</mat-label>
+                <input type="number" id="prix" name="prix" placeholder="Prix" matInput [(ngModel)]="produit.prix" [required]="true">
+              </mat-form-field>
+          
+              <mat-form-field>
+        
+                <mat-label for="quantite">Quantité</mat-label>
+                <input type="number" id="quantite" name="quantite" placeholder="Quantité" matInput [(ngModel)]="produit.quantite" [required]="true">
+              </mat-form-field>
+          
+              
+          
+              <mat-form-field>
+                <mat-label for="categorie">Catégorie</mat-label>
+                <mat-select id="categorie" name="categorie"(change)="selectCat($event)" [(ngModel)]="produit.categorie.id" [required]="true" >
+                  <mat-option *ngFor="let cat of categories" [value]="cat.id" >{{ cat.nom }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+             
+          
+                <mat-label for="photo">Photo</mat-label>
+                <input #myInput  type="file" id="photo" name="photo" (change)="onPhotoSelected($event)" [(ngModel)]="photo" required>
+              <div>
+              <button mat-raised-button color="primary" type="submit"  >Suivant</button>
+              <button mat-raised-button mat-dialog-close (click)="onCancel()">Annuler</button>
+            </div></div>
+            
+            </form> 
+            <form *ngIf="this.suivant==true " #DescriptionForm="ngForm" >
+              <div mat-dialog-content>
+                <mat-form-field>
+                <mat-label for="couleur">Couleur</mat-label>
+                <input type="text" id="couleur" name="couleur" placeholder="Couleur" matInput  [(ngModel)]="description.color" [required]="true">
+                <mat-error *ngIf="isNomEmpty">Le nom est obligatoire</mat-error>
+              </mat-form-field>
+              
+          
+              <mat-form-field>
+        
+                <mat-label for="matière">Matière</mat-label>
+                <input type="text" id="matière" name="matière" placeholder="Matière" matInput [(ngModel)]="description.material" [required]="true">
+              </mat-form-field>
+          
+              <mat-form-field>
+        
+                <mat-label for="description">Description courte</mat-label>
+                <input type="text" id="description"name="description" placeholder="Description courte" matInput [(ngModel)]="description.shortDescription" [required]="true">
+              </mat-form-field>
+              <mat-form-field>
+        
+                <mat-label for="description">Description longue</mat-label>
+                <input type="text" id="description"name="description" placeholder="Description longue" matInput [(ngModel)]="description.longDescription" [required]="true">
+              </mat-form-field>
+              <button class="btn light" (click)="precedentButton()">Precédent</button>
+              <button mat-raised-button color="primary" type="submit"  (click)="addProduit()" (click)="onCancel()" >Ajouter</button>
+        
+              <button mat-raised-button mat-dialog-close (click)="onCancel()">Annuler</button>
+              </div>
+              
+            </form> 
+          </section></div>
+  
+    </div>

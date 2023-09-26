@@ -1,0 +1,101 @@
+
+
+  
+  
+ <section class="section-content padding-y">
+  <div class="container">
+  
+  <div class="row">
+      <aside class="col-md-3">
+          
+  <div class="card">
+      <article class="filter-group">
+          <header class="card-header">
+              <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+                  <i class="icon-control fa fa-chevron-down"></i>
+                  <h6 class="title">Boutiques</h6>
+              </a>
+          </header>
+          <div class="filter-content collapse show" id="collapse_1">
+            <div class="card-body">
+              <div class="pb-3">
+                <input type="text"  [(ngModel)]="texteBoutique" class="form-control" aria-label="Default" placeholder="Recherche boutique" aria-describedby="inputGroup-sizing-default">
+              </div>
+          
+              <ul class="item-show-1">
+                <div *ngFor="let v of vendeurs">
+                  <label>
+                    <input type="checkbox" [value]="v.id" [ngModel]="selectedBoutiqueId === v.id" (change)="selectBoutique($event)">
+                    <a [attr.href]="'templateclient/' + v.idTemplate + '/' + v.id" (click)="getVendeurByNomboutique(v.nomboutique)">{{ v.nomboutique }}</a>
+                  </label>
+                </div>
+              </ul>
+            </div>
+          </div>
+          
+      </article> <!-- filter-group  .// -->
+      
+      
+       
+  </div> <!-- card.// -->
+  
+      </aside> <!-- col.// -->
+      
+      <main class="col-md-9">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Recherche</span>
+          </div>
+          <input type="text"  [(ngModel)]="texte" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+    <div class="row ">
+        <div class="col-sm-4 my-2"  *ngFor="let p of produitF">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="http://localhost:8080/apiproduit/getimage/{{p.id}}" width="50" height= "170" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{p.nom}}</h5>
+                  <h6 style="color:red">
+    
+                    {{p.prix}} DT
+                  </h6>
+                  <h6 style="color: green" *ngIf="p.quantite>0; else repture">
+                    En Stock
+                  </h6>
+                  <h6 type="button"  (click)="getVendeurById(p.vendeur.id)">
+                    Aller à la boutique
+                  </h6>
+                  <p> <a class="btn btn-primary" id="btn" routerLink="/products/{{p.id}}">Acheter Maintenant</a>
+                    <a class ="btn btn-primary m-2"(click)="addProductsToCompare(p.id)" (click)="onClick()">
+                      <span class="fa-solid fa-columns"   ></span>
+                    </a>
+                </div>
+                
+                
+              </div>
+              
+    <ng-template #repture><h6 style="color: brown"> Rupture de Stock</h6>
+    </ng-template>
+        </div>
+       
+  
+    
+        <div class="container" *ngIf="afficherBouton">
+          <form class="bouton-premier-plan d-flex">
+            <a class="btn btn-outline-danger" routerLink="/comparateur">
+                  <i class="fa fa-columns me-1"  ></i>
+                 Comparer
+                  <span class="badge bg-danger text-white ms-1 rounded-pill">{{this.produitsComapred.length}}</span>
+            </a>
+          </form></div>
+             
+            
+                 
+  
+    
+
+
+  
+   
+
+
+

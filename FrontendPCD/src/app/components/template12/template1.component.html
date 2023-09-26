@@ -1,0 +1,390 @@
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#">My shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page"  type="button" (click)="HomePage()">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                <li ngbDropdown class="dropdown">
+                    <a  ngbDropdownToggle class="nav-link dropdown-toggle"type="button" id="dropdownMenuButton1" aria-expanded="false">Shop</a>
+                    <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
+                        <li><a ngbDropdownItem type="button" (click)="ProduitsPage()">All Products</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a ngbDropdownItem href="#">Popular Items </a></li>
+                        <li><a ngbDropdownItem href="#">New Arrivals </a></li>
+                      </ul>
+                </li>
+            </ul>
+ 
+            <form class="d-flex">
+              <a class="btn btn-outline-dark" href="/Panier">
+                    <i class="bi-cart-fill me-1"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+              </a>
+            </form>
+        </div>
+    </div>
+</nav>
+  
+  <div [ngSwitch]="Buttons">
+    <div *ngSwitchCase="1">
+
+  <section class="hero-image">
+    <div class="hero-text">
+      <h2>Les Meilleurs Produits</h2>
+      <p>Achetez les produits les plus en vogue sur notre site</p>
+      <a (click)="ProduitsPage()" class="btn" id="btn" >Acheter Maintenant</a>
+    </div>
+  </section>
+  <div class="container" id="product-cards">
+    
+    <h1 class="text-center">PRODUITS POPULAIRES</h1>
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-md-3 py-3 py-md-0">
+            <div class="card">
+                <img src="https://via.placeholder.com/150x150" alt="">
+                <div class="card-body">
+                    <h3>Nom du produit</h3>
+                    <p>Lorem ipsum dolor sit amet.</p>
+                    <div class="star">
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star checked"></i>
+                        <i class="fas fa-star checked"></i>
+                    </div>
+                    <h5>$prix  <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+    <a (click)="ProduitsPage()" id="viewmorebtn">Voir plus</a>
+</div>
+<!-- product cards -->
+
+<!-- product -->
+<div class="container" style="margin-top: 100px;">
+<hr>
+</div>
+<div class="container">
+<h3 style="font-weight: bold;">PRODUCT</h3>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque vero eius ipsam incidunt illum totam nostrum quidem sit cumque fugit. Accusamus rem praesentium labore tempore ullam porro quaerat fugiat cum ipsum, sint perferendis voluptate ad, quod reiciendis officia! In voluptate quae expedita sunt eum placeat alias soluta. Rem commodi, impedit error doloribus ratione at provident beatae, aut doloremque sunt possimus voluptas recusandae nam aliquid eos quia minus harum repellat quae eveniet laborum dolore esse voluptate sed. Voluptate ullam dolor sapiente neque labore hic nam odio qui consectetur porro minima nesciunt suscipit vitae obcaecati reiciendis itaque ipsum unde, debitis nemo soluta!</p>
+
+<hr>
+</div>
+<!-- product -->
+
+
+<!-- offer -->
+<div class="container" id="offer">
+    <div class="row">
+        <div class="col-md-4 py-3 py-md-0">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h5>Free Shipping</h5>
+            <p>On order over $100</p>
+        </div>
+        <div class="col-md-4 py-3 py-md-0">
+            <i class="fa-solid fa-truck"></i>
+            <h5>Fast Delivery</h5>
+            <p>World wide</p>
+        </div>
+        <div class="col-md-4 py-3 py-md-0">
+            <i class="fa-solid fa-thumbs-up"></i>
+            <h5>Big Choice</h5>
+            <p>Of product</p>
+        </div>
+    </div>
+</div>
+ <!-- offer -->
+<!-- footer -->
+<footer id="footer" style="margin-top: 50px;">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 footer-content">
+                    <h3>Fashion</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, hic?</p>
+                    <p>
+                        Karcahi <br>
+                        Sindh <br>
+                        Pakistan <br>
+                    </p>
+                    <strong><i class="fas fa-phone"></i> Phone: <strong>+000000000000000</strong></strong><br>
+                    <strong><i class="fa-solid fa-envelope"></i> Email: <strong>example@gmail.com</strong></strong>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Usefull Links</h4>
+                    <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="about.html">About</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                      <li><a href="#">Services</a></li>
+                      <li><a href="#">Privacy policay</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Our Services</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, rem!</p>
+                    <ul>
+                        <li><a href="#">Smart phone</a></li>
+                        <li><a href="#">Smart watch</a></li>
+                        <li><a href="#">Airpods</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Our Social Network</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, ad?</p>
+                    <div class="socail-links mt-3">
+                        <a href="#" class="twiiter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="twiiter"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="twiiter"><i class="fa-brands fa-google-plus"></i></a>
+                        <a href="#" class="twiiter"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="twiiter"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></footer>
+</div>
+
+
+
+  
+    <div *ngSwitchCase="2">
+        <div [ngSwitch]="this.selectedValue">
+            <div *ngSwitchCase="Client">
+  
+    
+    <div class="px-0 bg-light" >
+        <div class="d-md-flex" > 
+        <div class="d-flex flex-column vh-00 flex-shrink-0 p-3 text-white bg-dark  " style="width: 250px; height: 100%;" > 
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" > 
+          <svg class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Boutique</span>
+         </a> 
+         <hr>
+         <ul class="nav nav-pills flex-column mb-auto" id="nav ul">
+         <li id="nav li"> <a type="button" class="nav-link text-white dropdown-toggle" data-toggle="collapse" (click)="collapse.toggle()" 
+            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" id="nav a"> <i class="fa fa-first-order"></i>
+           <span class="ms-2">Categories</span> </a>
+           <div class="icone" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+           <ul class="item-show-1"  >
+            
+            <li   type="button"  class="nav-link text-white" *ngFor="let cat of categories" [value]="cat.id" id="nav li">
+                {{ cat.nom }}</li>
+            </ul>
+        </div> 
+        </li></ul>  </div>
+        <div class="container">
+            <div class="row  ">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Key Word</span>
+                </div>
+                <input type="text"  [(ngModel)]="texte" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+              </div>
+            </div>
+        <div class="d-flex flex-wrap"> 
+    <div class="product-card " *ngFor="let p of produitF" >
+      <img src="https://via.placeholder.com/150x150" alt="Produit 1" >
+      <h3>{{p.nom}}</h3>
+      <p>{{p.prix}}</p>
+      <a (click)="addCommande(p.id)" class="btn" id="btn">Acheter Maintenant</a>
+      <a (click)="ProduitDetails(p.id)" class ="btn btn-primary m-2"  >
+        <span class="fa fa-info"></span>
+      </a>
+    </div>
+   
+    </div>
+</div></div>
+</div>
+            </div>
+            <div *ngSwitchCase="Vendeur">
+                <div class="px-0 bg-light">
+                    <div class="d-md-flex"  > 
+                    <div class="d-flex flex-column h-100 flex-shrink-0 p-3 text-white bg-dark  " style="width: 300px;"> 
+                      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" > 
+                      <svg class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Boutique</span>
+                     </a> 
+                     <hr>
+                       <ul class="nav nav-pills flex-column mb-auto"   id="navul">
+                         <li class="nav-item"  id="navli"> <a href="#" class="nav-link active" aria-current="page"  id="nava">
+                            <i class="fa fa-home"></i>
+                            <span class="ms-2">Home</span>
+                           </a> </li>
+                      <li> <a href="#" class="nav-link text-white"  id="nava">
+                                 <i class="fa fa-dashboard"></i>
+                                 <span class="ms-2">Dashboard</span> </a> </li> 
+                                 <li> <a type="button" class="nav-link text-white dropdown-toggle" data-toggle="collapse" (click)="collapse.toggle()" 
+                                  [attr.aria-expanded]="!isCollapsed"  id="nava" aria-controls="collapseExample"> <i class="fa fa-first-order"></i>
+                                 <span class="ms-2">Categories</span> </a>
+                                 <div class="icone" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+                                 <ul class="item-show-1"  >
+                                  
+                                  <li  (click)="selectCategorie($event)" type="button"  class="nav-link text-white"  id="navli" *ngFor="let cat of categories" [value]="cat.id" >
+                                    <i class="fa fa-trash" style="color: red;" (click)="deletecat(categorie)"></i>
+        <span>&nbsp;&nbsp;</span>
+     <ng-container classe="ng" *ngIf="!isEditMode; else editMode">
+                <i class="fa fa-edit" style="color: rgb(42, 42, 255);" (click)="enableEditMode(cat.id)"></i> {{ cat.nom }}
+            </ng-container>
+            <ng-template #editMode>
+                <div class="edit-mode-container">
+                  <input class="input-narrow" type="text" [(ngModel)]="cat.nom">
+                  <div class="edit-mode-icons">
+                    <i class="fa fa-check" style="color: green;" (click)="modifierCategorie(cat.id,cat.nom); cancelEditMode()"></i>
+                    <i class="fa fa-times" style="color: red;" (click)="cancelEditMode()"></i>
+                  </div>
+                </div>
+              </ng-template>
+        </li>
+
+        
+                                 <li type="button"  class="nav-link text-white dropdown-toggle"  data-toggle="collapse" (click)="isCollapsed2 = !isCollapsed2"
+                                  [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseExample2"id="navli" >
+                                   <i  class="Ajout fa fa-plus-square "></i>
+                                   <span class=" ms-2">Ajouter</span> 
+                                 </li>
+                                   <div id="collapseExample2" [ngbCollapse]="isCollapsed2">
+                                                      <label for="nom">Nom</label> 
+                                    <input type="text" id="nom" name="nom" [(ngModel)]="this.nomNewCat"
+                                     required>
+                                     <button (click)="createNewCategory()" (click)="isCollapsed2 = !isCollapsed2">Ajouter</button>
+                  </div>
+                               </ul>
+                           </div> 
+                                 </li>
+                                  
+                                  <li> <a href="#" class="nav-link text-white"  id="nava">
+                                      <i class="fa fa-cog"></i><span class="ms-2">Mes commandes</span> </a> </li> <li>
+                                           <a href="#" class="nav-link text-white"  id="nav a"> <i class="fa fa-bookmark"></i>
+                                           <span class="ms-2">Bookmarks</span> </a> </li> </ul> <hr> 
+                                                    
+                  </div> 
+                 
+                  
+                  
+                  <div class="container">
+                      <div class="row  ">
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Key Word</span>
+                          </div>
+                          <input type="text"  [(ngModel)]="texte" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                      </div>
+                      
+                      <div class="row ">
+                          <div class="col-sm-4 my-2"  *ngFor="let p of produitF">
+                              <div class="card" style="width: 18rem;">
+                                  <img class="card-img-top" src="http://localhost:8080/apiproduit/getimage/{{p.id}}" width="50" height= "170" alt="Card image cap">
+                                  <div class="card-body">
+                                    <h5 class="card-title">{{p.nom}}</h5>
+                                    <h6 style="color:red">
+                      
+                                      {{p.prix}} DT
+                                    </h6>
+                                    <h6 style="color: green" *ngIf="p.quantite>0; else repture">
+                                      En Stock
+                                    </h6>
+                                    <p><button class="btn btn-danger m-2" (click)=delete(p)>
+                                      <span class="fa fa-trash"></span>
+                                    </button>
+                                    <!--  routerLink="/products/{{p.id}}"  -->
+                                      <a routerLink="/products/{{p.id}}" class ="btn btn-primary m-2">
+                                      <span class="fa fa-info"></span>
+                                    </a>
+                                    <button class="btn btn-primary m-2" (click)="openDialogUpdate(p.id)">
+                                      <span class="fa-solid fa-pen"></span>
+                                    </button>
+                                  </p>
+                      
+                                  </div>
+                                </div>
+                      <ng-template #repture><h6 style="color: brown"> Rupture de Stock</h6>
+                      </ng-template>
+                          </div>
+                          <button mat-raised-button (click)="openDialog()">
+                          <div class="col-sm-4 my-2">
+                            <div  class="card" style="width: 18rem;"> 
+                              
+                              <img  class="card-img-top" src=".\assets\image\ajout.png"  width="50" height= "350" alt="Card image cap"  >
+                             
+                             
+                              
+                          </div> <i class="fa fa-plus-square fa-2x " aria-hidden="true" style="display:flex;justify-content:center;align-items:center;position: relative; top: -190px; left:-40px;"> 
+                              </i> <h4  style="display:flex;justify-content:center;align-items:center;position: relative; top: -190px; left:-35px;">Ajouter un nouveau <br>produit</h4>
+                      </div>
+                     </button>
+            </div></div>
+        </div></div>
+    </div></div></div>
+     <div *ngSwitchCase="3">   
+       <section class="py-5"  style="padding-top: 3rem;padding-bottom: 3rem ;">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-5"><img class="card-img-top mb-5 mb-md-0" src="http://localhost:8080/apiproduit/getimage/{{produit.id}}"  /></div>
+                <div class="col-md-6">
+                    <div class="small mb-1">SKU: BST-498</div>
+                    <h1 class="display-5 fw-bolder">{{produit.nom}}</h1>
+                    <div class="fs-5 mb-5" style="font-size: 1.25rem">
+                        <span class="text-decoration-line-through"  style="  text-decoration: line-through">$45.00</span>
+                        <span>{{produit.prix}}</span>
+                    </div>
+                    <p class="lead" style="font-size: 1.25rem;font-weight: 300;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                    <div class="d-flex" style="display: flex;">
+                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                        <button class="btn btn-outline-dark flex-shrink-0" id="btn" type="button">
+                            <i class="bi-cart-fill me-1"></i>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 bg-light">
+      <div class="container px-4 px-lg-5 mt-5">
+          <h2 class="fw-bolder mb-4">Related products</h2>
+          <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5">
+              <div class="card h-100">
+                  <!-- Sale badge-->
+                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                  <!-- Product image-->
+                  <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                  <!-- Product details-->
+                  <div class="card-body p-4">
+                      <div class="text-center">
+                          <!-- Product name-->
+                          <h5 class="fw-bolder">Special Item</h5>
+                          <!-- Product reviews-->
+                          <div class="d-flex justify-content-center small text-warning mb-2">
+                              <div class="bi-star-fill"></div>
+                              <div class="bi-star-fill"></div>
+                              <div class="bi-star-fill"></div>
+                              <div class="bi-star-fill"></div>
+                              <div class="bi-star-fill"></div>
+                          </div>
+                          <!-- Product price-->
+                          <span class="text-muted text-decoration-line-through">$20.00</span>
+                          $18.00
+                      </div>
+                  </div>
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                      <div class="text-center"><a class="btn btn-outline-dark mt-auto" id="btn" >Add to cart</a></div>
+                  </div>
+              </div>
+          </div></div></div></section>
+
+          <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        </footer>
+ 
+    </div>
+  </div>
+  

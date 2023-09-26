@@ -1,0 +1,194 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="#">My shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" (click)="navigation()"  type="button">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+              <li ngbDropdown class="dropdown">
+                  <a  ngbDropdownToggle class="nav-link dropdown-toggle"type="button" id="dropdownMenuButton1" aria-expanded="false">Shop</a>
+                  <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
+                      <li><a ngbDropdownItem type="button" >All Products</a></li>
+                      <li><hr class="dropdown-divider" /></li>
+                      <li><a ngbDropdownItem href="#">Popular Items </a></li>
+                      <li><a ngbDropdownItem href="#">New Arrivals </a></li>
+                    </ul>
+              </li>
+          </ul>
+
+          <form class="d-flex">
+            <a class="btn btn-primary rounded-circle" (click)="navigation1()">
+              <i class="bi bi-person-fill me-1"></i>
+              Profile
+              <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+            </a>
+          </form>
+      </div>
+  </div>
+</nav>
+<section class="section-content padding-y">
+  <div class="container">
+  
+  <div class="row">
+      <aside class="col-md-3">
+          
+  <div class="card">
+      <article class="filter-group">
+          <header class="card-header">
+              <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+                  <i class="icon-control fa fa-chevron-down"></i>
+                  <h6 class="title">Categorie</h6>
+              </a>
+          </header>
+          <div class="filter-content collapse show" id="collapse_1" >
+              <div class="card-body">
+                  <form class="pb-3">
+                    
+                  </form>
+                  
+                  <ul class="item-show-1"  >
+                  
+                    <li *ngFor="let cat of categories">
+                      <label>
+                        <input type="checkbox" [value]="cat.id" [ngModel]="selectedCategoryId === cat.id" (change)="selectCategorie($event)">
+                        {{cat.nom}}
+                      </label>
+                      <ng-container *ngIf="!isEditMode; else editMode">
+                        <i  type="button" class="fa fa-edit" style="color: rgb(42, 42, 255); float: right;" (click)="enableEditMode(cat.id)"></i>
+                        <i  type="button" class="fa fa-trash" style="color: red; float: right;" (click)="deletecat(cat)"></i>
+                      </ng-container>
+                      <ng-template #editMode>
+                        <div class="edit-mode-container">
+                          <input class="input-narrow" type="text" [(ngModel)]="cat.nom">
+                          <div class="edit-mode-icons">
+                            <i type="button" class="fa fa-check" style="color: green;" (click)="modifierCategorie(cat.id,cat.nom); cancelEditMode()"></i>
+                            <i  type="button"class="fa fa-times" style="color: red;" (click)="cancelEditMode()"></i>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </li>
+  <div>
+    <label for="nom">Nom</label> 
+<input type="text" id="nom" name="nom" [(ngModel)]="this.nomNewCat"required>
+<button class="btn btn-primary" (click)="createNewCategory()" >Ajouter une categorie</button></div>
+</ul>
+  
+              </div> <!-- card-body.// -->
+          </div>
+      </article>   </div> <!-- card.// -->
+          
+    </aside> <!-- col.// -->
+                
+
+
+  
+<main class="col-md-9">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Recherche</span>
+    </div>
+    <input type="text"  [(ngModel)]="texte" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  </div>
+
+      
+      
+      <div class="row ">
+        <div type="button" class="col-sm-4 my-2" (click)="openDialog()"  >
+          <div class="card1" style="width: 18rem;">
+              <img class="card-img-top" src="https://via.placeholder.com/150x150" width="50" height= "170" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Nom de produit</h5>
+                <h6 style="color:red">
+  
+                 PrixDT
+                </h6>
+              
+                <p> <a class="btn btn-primary" id="btn">Ajouter un produit</a>
+              </p>
+              
+              </div>
+              
+              
+            </div>
+</div>
+          <div class="col-sm-4 my-2"  *ngFor="let p of this.produitF">
+              <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="http://localhost:8080/apiproduit/getimage/{{p.id}}" width="50" height= "170" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{p.nom}}</h5>
+                    <h6 style="color:red">
+      
+                      {{p.prix}} DT
+                    </h6>
+                    <h6 style="color: green" *ngIf="p.quantite>0; else repture">
+                      En Stock
+                    </h6>
+                    <p><button class="btn btn-danger m-2" (click)=delete(p)>
+                      <span class="fa fa-trash"></span>
+                    </button>
+                    <!--  routerLink="/products/{{p.id}}"  -->
+                      <a routerLink="/products/{{p.id}}" class ="btn btn-primary m-2">
+                      <span class="fa fa-info"></span>
+                    </a>
+                    <button class="btn btn-primary m-2" (click)="openDialogUpdate(p.id)">
+                      <span class="fa-solid fa-pen"></span>
+                    </button>
+                  </p>
+      
+                  </div>
+                </div>
+      <ng-template #repture><h6 style="color: brown"> Rupture de Stock</h6>
+      </ng-template>
+          </div>
+          
+</div>
+
+
+<!-- <div [ngSwitch]="this.selectedValue">
+  <div *ngSwitchCase="Client">
+
+
+<div class="px-0 bg-light" >
+<div class="d-md-flex" > 
+<div class="d-flex flex-column vh-00 flex-shrink-0 p-3 text-white bg-dark  " style="width: 250px; height: 100%;" > 
+<a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none" > 
+<svg class="bi me-2" width="40" height="32"> </svg> <span class="fs-4">Boutique</span>
+</a> 
+<hr>
+<ul class="nav nav-pills flex-column mb-auto" id="nav ul">
+<li id="nav li"> <a type="button" class="nav-link text-white dropdown-toggle" data-toggle="collapse" (click)="collapse.toggle()" 
+  [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" id="nav a"> <i class="fa fa-first-order"></i>
+ <span class="ms-2">Categories</span> </a>
+ <div class="icone" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+ <ul class="item-show-1"  >
+  
+  <li   type="button"  class="nav-link text-white" *ngFor="let cat of categories" [value]="cat.id" id="nav li">
+      {{ cat.nom }}</li>
+  </ul>
+</div> 
+</li></ul>  </div>
+<div class="container">
+  <div class="row  ">
+  <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Key Word</span>
+      </div>
+      <input type="text"  [(ngModel)]="texte" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </div>
+  </div>
+<div class="d-flex flex-wrap"> 
+<div class="product-card " *ngFor="let p of produitF" >
+<img src="https://via.placeholder.com/150x150" alt="Produit 1" >
+<h3>{{p.nom}}</h3>
+<p>{{p.prix}}</p>
+<a routerLink="/products/{{p.id}}" class="btn" id="btn">Acheter Maintenant</a>
+
+
+</div>
+
+</div>
+</div></div>
+</div></div> -->

@@ -1,0 +1,222 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#">My shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link active" aria-current="page"  type="button" >Page d'acceuil</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Notre boutique</a></li>
+                <li ngbDropdown class="dropdown">
+                    <a  ngbDropdownToggle class="nav-link dropdown-toggle"type="button" id="dropdownMenuButton1" aria-expanded="false">Shop</a>
+                    <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1">
+                        <li><a routerLink="/listproducts1" ngbDropdownItem type="button" >All Products</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a ngbDropdownItem href="#">Produits populaires </a></li>
+                      </ul>
+                </li>
+            </ul>
+            
+            <form class="d-flex">
+              <a class="btn btn-primary rounded-circle" (click)="navigation1()">
+                <i class="bi bi-person-fill me-1"></i>
+                Profile
+                <span class="badge bg-dark text-white ms-1 rounded-pill"></span>
+              </a>
+            </form>
+            
+                    <!-- <form class="d-flex">
+                        <a class="btn btn-outline-dark" href="/Panier">
+                              <i class="bi-cart-fill me-1"></i>
+                              Cart
+                              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </a>
+                      </form> -->
+                    </div>
+                    </div>
+                </nav>
+                <section class="hero-image" [style.background-image]="'url(' + (img ? img : (templateContent.photo ? 'http://localhost:8080/apitemplate/getimage/' + templateContent.id : './assets/800x400.png')) + ')'"
+                  >
+
+
+                    <div class="hero-text">
+                    
+                        <ng-container *ngIf="!isEditMode1; else editMode_1">
+                            <h2 class="flex-container">
+                              <span class="text">{{templateContent.text1}}</span><span>&nbsp;</span>
+                             <h3>
+                                <i type="button" class="fa fa-edit" style="color: rgb(42, 42, 255);" (click)="enableEditMode1()"></i></h3>
+                              
+                            </h2>
+                          </ng-container>
+                          
+                          <ng-container *ngIf="!isEditMode2; else editMode_2">
+                            
+                      <h4 class="flex-container">
+                        <span class="text">
+                        {{this.templateContent.text2}}</span><span>&nbsp;&nbsp;</span>
+                      <i type="button" class="fa fa-edit" style="color: rgb(42, 42, 255);" (click)="enableEditMode2()"></i> </h4>
+                   </ng-container>
+                   
+
+                      <a  class="btn" id="btn" (click)="navigation()" >Acheter Maintenant</a> <br><br>
+                       <div >      
+                        <label>Photo : </label>
+                      <input  #myInput type="file" id="photo" name="photo" (change)="onPhotoSelected($event)" [(ngModel)]="photo" required>
+                    </div>
+                    </div>
+                  </section>
+                  <div class="container" id="product-cards">
+                    
+                    <h1 class="text-center">PRODUITS POPULAIRES</h1>
+                    <div class="row" style="margin-top: 30px;">
+                      <div class="col-md-3 py-3 py-md-0" *ngFor="let p of this.produitF| slice:0:4">
+                                <div class="card">
+                                <img src="http://localhost:8080/apiproduit/getimage/{{p.id}}"  alt="">
+                                <div class="card-body">
+                                    <h3>{{p.nom}}</h3>
+                                    <h6 style="color: green" *ngIf="p.quantite>0; else repture">
+                                      En Stock
+                                    </h6>
+                                    <ng-template #repture><h6 style="color: brown"> Rupture de Stock</h6>
+                                    </ng-template>
+                                    <div class="star">
+                                        <i class="fas fa-star checked"></i>
+                                        <i class="fas fa-star checked"></i>
+                                        <i class="fas fa-star checked"></i>
+                                        <i class="fas fa-star checked"></i>
+                                        <i class="fas fa-star checked"></i>
+                                    </div>
+                                    <h5>{{p.prix}} <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                                    <p> <a class="btn btn-primary" id="btn" >Acheter Maintenant</a></p>
+
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <a  id="viewmorebtn">Voir plus</a>
+                </div>
+                <!-- product cards -->
+                
+                <!-- product -->
+                <div class="container" style="margin-top: 100px;">
+                <hr>
+                </div>
+                <div class="container">
+                <h3 style="font-weight: bold;">Notre boutique</h3>
+                <ng-container *ngIf="!isEditMode3; else editMode_3"> 
+                   <h4 class="flex-container"> <span class="text">
+                {{this.templateContent.description}}
+                  
+                    
+                     
+                     </span><span>&nbsp;&nbsp;</span>
+                   <i type="button" class="fa fa-edit" style="color: rgb(42, 42, 255);" (click)="enableEditMode3()"></i> </h4>
+                </ng-container>
+                <hr>
+                </div>
+                <!-- product -->
+                
+                
+                <!-- offer -->
+                <div class="container" id="offer">
+                    <div class="row">
+                        <div class="col-md-4 py-3 py-md-0">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <h5>Livraison gratuite</h5>
+                            <p>Sur commande supérieure à 100 DT</p>
+                        </div>
+                        <div class="col-md-4 py-3 py-md-0">
+                            <i class="fa-solid fa-truck"></i>
+                            <h5>Livraison rapide</h5>
+                            <p>sur toute la Tunisie</p>
+                        </div>
+                        <div class="col-md-4 py-3 py-md-0">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                            <h5>Grand choix</h5>
+                            <p>de produits</p>
+                        </div>
+                    </div>
+                </div>
+                 <!-- offer -->
+                <!-- footer -->
+                <footer id="footer" style="margin-top: 50px;">
+                    <div class="footer-top">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 footer-content">
+                                    <h3>Fashion</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, hic?</p>
+                                    <p>
+                                        Karcahi <br>
+                                        Sindh <br>
+                                        Pakistan <br>
+                                    </p>
+                                    <strong><i class="fas fa-phone"></i> Phone: <strong>+000000000000000</strong></strong><br>
+                                    <strong><i class="fa-solid fa-envelope"></i> Email: <strong>example@gmail.com</strong></strong>
+                                </div>
+                                <div class="col-lg-3 col-md-6 footer-links">
+                                    <h4>Usefull Links</h4>
+                                    <ul>
+                                      <li><a href="index.html">Home</a></li>
+                                      <li><a href="about.html">About</a></li>
+                                      <li><a href="contact.html">Contact</a></li>
+                                      <li><a href="#">Services</a></li>
+                                      <li><a href="#">Privacy policay</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-3 col-md-6 footer-links">
+                                    <h4>Our Services</h4>
+                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi, rem!</p>
+                                    <ul>
+                                        <li><a href="#">Smart phone</a></li>
+                                        <li><a href="#">Smart watch</a></li>
+                                        <li><a href="#">Airpods</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-3 col-md-6 footer-links">
+                                    <h4>Our Social Network</h4>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, ad?</p>
+                                    <div class="socail-links mt-3">
+                                        <a href="#" class="twiiter"><i class="fa-brands fa-twitter"></i></a>
+                                        <a href="#" class="twiiter"><i class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="#" class="twiiter"><i class="fa-brands fa-google-plus"></i></a>
+                                        <a href="#" class="twiiter"><i class="fa-brands fa-instagram"></i></a>
+                                        <a href="#" class="twiiter"><i class="fa-brands fa-linkedin-in"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></footer>
+             
+                   
+                    
+                      <ng-template #editMode_1>
+                        <div class="edit-mode-container">
+                          <input class="input-wide" type="text" [(ngModel)]="templateContent.text1" >
+                          <div class="edit-mode-icons" style=" position: relative;right: 160%;">
+                           <h3> <i  type="button" class="fa fa-check " style="color: green;" (click)="modifiertext1( templateContent.text1)"></i>
+                            <i   type="button"class="fa fa-times" style="color: red;" (click)="cancelEditMode1()"></i></h3>
+                          </div>
+                        </div>
+                      </ng-template>
+                      <ng-template #editMode_2>
+                        <div class="edit-mode-container">
+                          <input class="input-wide-2" type="text" [(ngModel)]="templateContent.text2" style="width: 700px;">
+                          <div class="edit-mode-icons" style=" position: relative;right: 240%;">
+                           <h3> <i  type="button" class="fa fa-check " style="color: green;" (click)="modifiertext2( templateContent.text2) "></i>
+                            <i   type="button"class="fa fa-times" style="color: red;" (click)="cancelEditMode2()"></i></h3>
+                          </div>
+                        </div>
+                      </ng-template>
+                      <ng-template #editMode_3>
+                        <div class="edit-mode-container">
+                            <textarea class="input-wide-2 multiline-input" type="text" [(ngModel)]="templateContent.description"  cols="200" rows="5" ></textarea>
+                          <div class="edit-mode-icons" style=" position: relative;right: 500%;">
+                           <h3> <i  type="button" class="fa fa-check " style="color: green;" (click)="modifierDescription( templateContent.description) "></i>
+                            <i   type="button"class="fa fa-times" style="color: red;" (click)="cancelEditMode3()"></i></h3>
+                          </div>
+                        </div>
+                      </ng-template>

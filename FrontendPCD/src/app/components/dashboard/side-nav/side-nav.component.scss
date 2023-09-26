@@ -1,0 +1,28 @@
+.nav-items {
+  padding-top: 40px;
+  .nav-item {
+    padding: 25px 50px;
+    cursor: pointer;
+    @media only screen and (max-width: 1500px) {
+      padding: 25px 40px;
+    }
+    &:hover {
+      background-color: rgb(1, 38, 69);
+    }
+    i.fa {
+      margin-right: 20px;
+      font-size: 22px;
+      transition: all 0.3s ease-in-out;
+    }
+    span {
+      display: inline;
+      @media only screen and (max-width: 1300px) {
+        display: none;
+      }
+    }
+  }
+  .nav-item:hover i.fa {
+    transform: rotate(360deg);
+  
+ }
+}

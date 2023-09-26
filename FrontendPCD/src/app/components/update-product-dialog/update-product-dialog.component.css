@@ -1,0 +1,16 @@
+.mat-form-field {
+    display: block !important;
+    position: relative;
+    text-align: left;
+}
+.split-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  
+  .split-left, .split-right {
+    flex: 1;
+    height: 100%;
+  }
+  

@@ -1,0 +1,132 @@
+<section class="h-100 h-custom" style="background-color: #f6a7a7; ">
+  <div class="container py-5 h-100">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12">
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-8" style=" max-height: 100vh;overflow-y: auto;">
+                <div class="p-5">
+                  <div class="d-flex justify-content-between align-items-center mb-5">
+                    <h1 class="fw-bold mb-0 text-black">Panier</h1>
+                    <h6 class="mb-0 text-muted">
+                      {{commandes.length}}
+                      produits à acheter</h6>
+                  </div>
+                  <div *ngFor="let c of commandes">
+                    <hr class="my-4">
+                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                      <div class="col-md-2 col-lg-2 col-xl-2">
+                        <img src="http://localhost:8080/apiproduit/getimage/{{c.product.id}}"
+                          class="img-fluid rounded-3" alt="Cotton T-shirt">
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-3">
+                        <h6 class="text-muted">{{c.product.nom}}</h6>
+                        <h6 class="text-black mb-0">{{c.product.categorie.nom}}</h6>
+                      </div>
+                      <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                        <button class="btn btn-link px-2" (click)="decrementQuantity(c)">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <input id="form1" min="0" name="quantity" [(ngModel)]="c.quantite" type="number"
+                          class="form-control form-control-sm" />
+                        <button class="btn btn-link px-2" (click)="incrementQuantity(c)">
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
+                      <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                        <h6 class="mb-0">{{c.product.prix}}DT</h6>
+                      </div>
+                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                        <a type="button" class="text-muted" (click)="DeleteCommande(c.id)"><i
+                            class="fas fa-times"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="this.order==true" class="mt-4 mx-auto text-center" style="max-width:600px">
+                    <svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="round-check">
+                          <circle id="Oval" fill="#D3FFD9" cx="48" cy="48" r="48"></circle>
+                          <circle id="Oval-Copy" fill="#87FF96" cx="48" cy="48" r="36"></circle>
+                          <polyline id="Line" stroke="#04B800" stroke-width="4" stroke-linecap="round"
+                            points="34.188562 49.6867496 44 59.3734993 63.1968462 40.3594229"></polyline>
+                        </g>
+                      </g>
+                    </svg>
+                    <div class="my-3">
+                      <h4>Merci pour votre commande</h4>
+                    </div>
+                  </div>
+
+
+
+                  <hr class="my-4">
+
+                  <div class="pt-5">
+                    <h6 class="mb-0"><a (click)="navigate()" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Retourner à la boutique</a></h6>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+              <div class="col-lg-4 bg-grey">
+                <div class="p-5">
+
+
+
+                  <div class="d-flex justify-content-between align-items-center" style="font-size: x-large;">
+                    <span>Détails de la carte</span>
+                  </div><span class="type d-block mt-3 mb-1">Type de la carte</span><label class="radio"> <input
+                      type="radio" name="card" value="payment" checked> <span><img width="30"
+                        src="https://img.icons8.com/color/48/000000/mastercard.png" /></span> </label>
+
+                  <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30"
+                        src="https://img.icons8.com/officel/48/000000/visa.png" /></span> </label>
+
+                  <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30"
+                        src="https://img.icons8.com/ultraviolet/48/000000/amex.png" /></span> </label>
+
+
+                  <label class="radio"> <input type="radio" name="card" value="payment"> <span><img width="30"
+                        src="https://img.icons8.com/officel/48/000000/paypal.png" /></span> </label>
+                  <hr class="my-4">
+                  <div><label class="credit-card-label">nom de la carte</label><input type="text"
+                      class="form-control credit-inputs" placeholder="Name"></div>
+                  <div><label class="credit-card-label">numéro de la carte</label><input type="text"
+                      class="form-control credit-inputs" placeholder="0000 0000 0000 0000"></div>
+                  <div class="row">
+                    <div class="col-md-6"><label class="credit-card-label">Date</label><input type="text"
+                        class="form-control credit-inputs" placeholder="01/01/2023"></div>
+                    <div class="col-md-6"><label class="credit-card-label">CVV</label><input type="text"
+                        class="form-control credit-inputs" placeholder="000"></div>
+                  </div>
+                  <hr class="my-4">
+
+                  <div class="d-flex justify-content-between information"><span>total</span><span>{{getSomme()}}.00
+                      DT</span></div>
+                  <div class="d-flex justify-content-between information"><span>Livraison</span><span>7.00 DT</span>
+                  </div>
+                  <div class="d-flex justify-content-between information"><span>Total</span><span>{{getSomme()+7.00}}.00
+                      DT</span></div>
+                  <button class="btn btn-primary btn-block d-flex justify-content-between mt-5" type="button"
+                    (click)="addAchat()"><span>Registre</span></button>
+                </div>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>

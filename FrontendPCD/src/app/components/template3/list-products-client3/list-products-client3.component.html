@@ -1,0 +1,153 @@
+
+<header class="section-header">
+    <section class="header-main border-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-2 col-4">
+            <h3>Company Name</h3>
+          </div>
+          <div class="col-lg-6 col-sm-12">
+            
+              <div class="input-group w-100">
+                <input type="text" [(ngModel)]="texte" class="form-control" placeholder="Recherche">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" (click)="searchProducts()">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            
+          </div>
+          <div class="col-lg-4 col-sm-6 col-12 d-flex justify-content-end">
+            <form class="d-flex">
+              <a class="btn btn-outline-dark" (click)="navigation1()">
+                <i class="bi-cart-fill me-1"></i>
+                Panier
+                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+  
+    
+    
+    
+    <!-- ========================= SECTION PAGETOP ========================= -->
+   
+    <!-- ========================= SECTION INTRO END// ========================= -->
+    
+    <!-- ========================= SECTION CONTENT ========================= -->
+    <section class="section-content padding-y">
+    <div class="container">
+    
+    <div class="row">
+        <aside class="col-md-3">
+            
+    <div class="card">
+        <article class="filter-group">
+            <header class="card-header">
+                <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+                    <i class="icon-control fa fa-chevron-down"></i>
+                    <h6 class="title">Categories</h6>
+                </a>
+            </header>
+            <div class="filter-content collapse show" id="collapse_1" >
+                <div class="card-body">
+                    
+                    
+                    <ul class="item-show-1"  >
+        
+                        <div *ngFor="let cat of categories">
+                          <label>
+                            <input type="checkbox" [value]="cat.id" [ngModel]="selectedCategoryId === cat.id" (change)="selectCategorie($event)">
+                            {{cat.nom}}
+                          </label>
+                        </div>
+                        </ul>
+      
+    
+                </div> <!-- card-body.// -->
+            </div>
+        </article> <!-- filter-group  .// -->
+       
+       
+       
+    </div> <!-- card.// -->
+    
+        </aside> <!-- col.// -->
+        <main class="col-md-9">
+    
+   
+    
+    <article class="card card-product-list"*ngFor="let p of produitF">
+        <div class="row no-gutters">
+            <aside class="col-md-3">
+                
+                    <img src="http://localhost:8080/apiproduit/getimage/{{p.id}}" style="width:200px;height:200px;">
+                
+            </aside> <!-- col.// -->
+            <div class="col-md-6">
+                <div class="info-main">
+                    <h4 class="h5 title"> {{p.nom}} </h4>
+                    <div class="rating-wrap mb-3">
+                        <ul class="rating-stars">
+                            <li style="width:80%" class="stars-active"> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> 
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                <i class="fa fa-star"></i> 
+                            </li>
+                        </ul>
+                        
+                    </div> <!-- rating-wrap.// -->
+                    
+                    <p>  {{ getDescription(p.id) }} </p>
+                </div> <!-- info-main.// -->
+            </div> <!-- col.// -->
+            <aside class="col-sm-3">
+                <div class="info-aside">
+                    <div class="price-wrap">
+                        <span class="price h5">  {{p.prix}} DT </span>	
+                        
+                    </div> <!-- info-price-detail // -->
+                    
+                    <h6 style="color: green" *ngIf="p.quantite>0; else repture">
+                            En Stock
+                          </h6>
+                    <br>
+                    <p>
+                       
+                        <a  routerLink="/products/{{p.id}}" class="btn btn-primary">
+                            <span class="text">Acheter maintenant</span>
+                        </a>
+                    </p>
+                    <ng-template #repture><h6 style="color: brown"> Rupture de Stock</h6>
+                    </ng-template>
+                </div> <!-- info-aside.// -->
+            </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+    </article> <!-- card-product .// -->
+    
+   
+   
+        
+    
+    
+    
+    
+   
+    
+        </main> <!-- col.// -->
+    
+    </div>
+    
+    </div> <!-- container .//  -->
+    </section>
+   

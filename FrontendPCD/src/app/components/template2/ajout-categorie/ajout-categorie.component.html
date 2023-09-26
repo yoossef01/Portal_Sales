@@ -1,0 +1,51 @@
+
+<html >
+
+<body>
+    
+
+    
+    
+    <div class="my-5">
+      <div class="mx-auto w-25 " style="max-width:100%;">
+        <h2 class="text-center mb-3">Ajouter Catégorie</h2>
+        <form #produitForm="ngForm" (submit)="createNewCategory()">
+         
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="name" class="form-label">Nom</label>
+              <input id="nom"   type="text" name="nom" class="form-control" placeholder="nom" [(ngModel)]="this.nomNewCat" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 form-group mb-3">
+              <label for="Address" class="form-label">Description</label>
+              <textarea id="Address" type="text" name="address"  formControlName="address" class="form-control" placeholder="Description" rows="3" required></textarea>
+            </div>
+          </div>
+
+
+
+
+         
+          <div class="row">
+            <div class="col-md-12 form-group">
+              
+              <div class="col-md-12 text-end">
+                <button class="btn btn-danger me-3"><i class="fa-solid fa-ban"></i>&nbsp;Annuler</button>
+                <button class="btn btn-primary" type="submit"><i class="fa-solid fa-save"></i>&nbsp;Enregistrer</button>
+            </div>
+            </div>
+          </div>
+
+          <div>
+            
+          </div>
+        </form>
+  
+      </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,161 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<iframe title="Snowflake_Usage_Sample" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=d2c6fba1-976c-44fd-83ab-42d525aa096e&autoAuth=true&ctid=63643b42-f4d7-4ba7-bfa6-5bf0c2741338" frameborder="0" allowFullScreen="true"></iframe>       
+<div class="background">
+    <span class="shodow">
+    <div class="head">
+      <div class="navbar">
+        <div class="logo">
+          
+          <h1 style="font-size: 2.2rem;
+          font-family: Comic sans MS;">PortailMaker</h1>
+        </div>
+        <div class="links">
+          
+          <a routerLink="/liste">Collections</a>
+          <a routerLink="/liste">Stores</a>
+          <a type="button" (click)="scrollToService()">Nos services</a>
+        </div>
+        <div class="auth-links ">
+          <div ngbDropdown class="dropdown1">
+            <a ngbDropdownToggle class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton1" aria-expanded="false">Se connecter</a>
+
+            <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1" style="background-color:cornflowerblue">
+              <li><a ngbDropdownItem  routerLink="/loginVendeur">Vendeur</a></li>
+              <li><a ngbDropdownItem routerLink="/loginClient">Client</a></li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-primary ms-3" routerLink="/insc">S'inscrire</button>
+        </div>
+      </div>
+      <div class="container">
+
+        <div class="row height d-flex justify-content-center align-items-center">
+           
+          <div class="col-md-8" >
+<h1 >Bienvenue sur notre portail de vente en ligne  </h1>
+<h4>Découvrez une sélection de produits de qualité et trouvez ce dont vous avez besoin en quelques clics !</h4>
+            <div class="search" >
+              <i class="fa fa-search" ></i>
+              <input type="text" [(ngModel)]="recherche" class="form-control" placeholder="recherchez un produit" >
+              <button class="btn btn-primary" (click)="rechercher()" routerLink="/liste">Rechercher</button>
+             
+          </div>
+          <!-- <div ngbDropdown class="dropdown">
+            <button ngbDropdownToggle class="btn btn-secondary" type="button" id="dropdownMenuButton1" aria-expanded="false"  style="position: relative; left:-130px;top:-50px; width:25%;">
+              Boutiques
+              </button>
+                <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton1" >
+                  <li *ngFor="let boutique of vendeurs">
+                    <a ngbDropdownItem (click)="onBoutiqueSelected(boutique)">{{boutique.nomboutique}}</a>
+                  </li>
+                  
+                </ul>
+          </div> -->
+          </div>
+          
+        </div>
+    </div>
+    </div>
+  </span>
+   
+ 
+    <main class="main" >
+       <div class="section" >
+        <div class=  "images"      >
+
+            <img class="imgzen" src=".\assets\zen.png" alt="Image 1" style="margin-right: 60px; " >
+            <img class="imgzara" src=".\assets\zara.png" alt="Image 2" style="margin-right: 60px;">
+            <img class="img"src=".\assets\mx.png" alt="Image 3" style="margin-right: 60px;">
+            <img class="imgha"src=".\assets\ha.png" alt="Image 4" style="margin-right: 60px;">
+            <img class="imgfat" src=".\assets\fatales.png" alt="Image 5"> </div>
+            <p  class="cache" style=" font-family: Comic sans MS;">Plus de 50 boutiques nous font confiance</p>
+           
+              
+            </div>
+            
+            
+             <div class="line"></div>
+             <div class="body">
+             <section class="page-section" id="services">
+              <div class="container">
+                  <div class="text-center">
+                      <h2 class="section-heading text-uppercase">Services</h2>
+                      <h3 class="section-subheading text-muted">Simplifier votre expérience de vente en ligne et trouver les meilleurs produits au meilleur prix.</h3>
+                  </div>
+                  <div class="row text-center">
+                      <div class="col-md-4">
+                          <span class="fa-stack fa-4x">
+                              <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fas fa-store fa-stack-1x fa-inverse"></i>
+                          </span>
+                          <h4 class="my-3">Espace de vente personnalisé</h4>
+                          <p class="text-muted">Chaque vendeur inscrit sur notre portail dispose d'un espace de vente personnalisé où il peut gérer ses clients, ses commandes et ses produits. Le vendeur peut personnaliser son espace pour qu'il reflète l'image de sa marque.</p>
+                      </div>
+                      <div class="col-md-4">
+                          <span class="fa-stack fa-4x">
+                              <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fas fa-dollar fa-stack-1x fa-inverse"></i>
+                          </span>
+                          <h4 class="my-3">Alignement des prix</h4>
+                          <p class="text-muted">Notre système de recherche sémantique sur le web permet aux vendeurs de connaître les prix de leurs concurrents pour des produits similaires. Ainsi, le vendeur peut aligner ses prix par rapport au marché pour rester compétitif.</p>
+                      </div>
+                      <div class="col-md-4">
+                          <span class="fa-stack fa-4x">
+                              <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                          </span>
+                          <h4 class="my-3">Présentation des produits</h4>
+                          <p class="text-muted">Les pages de présentation des produits sont personnalisées pour chaque vendeur, ce qui permet au client de découvrir les produits du vendeur comme s'ils étaient sur son propre site web.</p>
+                      </div>
+                  </div>
+              </div>
+          </section>
+        </div>
+        <!-- <div class="col-4 text-center d-flex">
+          <button class="btn btn-primary p-4 rounded-5">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </button>
+      </div>
+      <button class="btn btn-primary rounded-5">My Button</button> -->
+
+              <div class="build">
+                
+              <div  class="card" style="max-width: 40rem;  height: 150px; ">
+                <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded"style="background-color: white;">
+
+                <div class="card-body" >
+                  <h1 class="h1home" >Une plateforme de vente en ligne complète et flexible</h1>
+                  Créez votre espace de vente en ligne, enregistrez vos produits sur le site, gérez les clients et les commandes 
+                  et présentez vos produits aux clients comme s'ils étaient sur votre propre site.<br><br>
+
+                  <a class="btn btn-primary" style="height: 3rem;" routerLink="/signupVendeur">Créer un nouveau magasin</a>
+                </div>
+               
+              </div>
+                <div class="card-container">
+              <div class="card" style=" width: 200px;
+              height: 300px;
+              position: relative;
+              perspective: 1000px;">
+                  <img src=".\assets\template1.png">
+                  <img src=".\assets\template1.png">
+                  
+                </div>
+            </div> 
+            </div>
+            
+           
+  
+  
+  
+              </div>
+    </main>
+
+    <footer style="height: 500px;">
+      <!-- Pied de page de la page -->
+  
+    </footer>
+ </div>
+ 
+ 
